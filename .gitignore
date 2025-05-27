@@ -1,0 +1,4 @@
+ppo_*
+vec_*
+logs/
+stereo_depth_camera/credentials.h
