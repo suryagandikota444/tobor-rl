@@ -12,21 +12,47 @@ import random
 # with reaching a target in 3D space. It's designed to be used with 
 # reinforcement learning algorithms like PPO.
 
-def forward_kinematics_3d(theta0, theta1, theta2, L1=21.0, L2=21.0):
+# def forward_kinematics_3d(theta0, theta1, theta2, L1=21.0, L2=21.0, radians=False):
+#     # Convert to radians
+#     t0 = np.radians(theta0) if not radians else theta0
+#     t1 = np.radians(theta1) if not radians else theta1
+#     t2 = np.radians(theta2) if not radians else theta2
+
+#     # In the Y-Z plane, compute position from shoulder and elbow
+#     y = L1 * np.sin(t1) + L2 * np.sin(t1 + t2)
+#     r = L1 * np.cos(t1) + L2 * np.cos(t1 + t2)  # radial distance from base
+
+#     # Project onto 3D space using base rotation
+#     x = r * np.cos(t0)
+#     z = r * np.sin(t0)
+
+#     return np.array([x, y, z])
+
+def forward_kinematics_3d(theta0, theta1, theta2, L1=21.0, L2=21.0, radians=False):
     # Convert to radians
-    t0 = np.radians(theta0)
-    t1 = np.radians(theta1)
-    t2 = np.radians(theta2)
+    t0 = np.radians(theta0) if not radians else theta0 # Base rotation around Z-axis
+    t1 = np.radians(theta1) if not radians else theta1 # Shoulder angle from XY-plane
+    t2 = np.radians(theta2) if not radians else theta2 # Elbow angle relative to L1
 
-    # In the Y-Z plane, compute position from shoulder and elbow
-    y = L1 * np.sin(t1) + L2 * np.sin(t1 + t2)
-    r = L1 * np.cos(t1) + L2 * np.cos(t1 + t2)  # radial distance from base
+    # With X-Y as the flat plane and Z as vertical:
+    # z_coord is the height of the end-effector along the Z-axis.
+    # This calculation was previously for the 'y' component in the old coordinate system.
+    z_coord = L1 * np.sin(t1) + L2 * np.sin(t1 + t2)
 
-    # Project onto 3D space using base rotation
-    x = r * np.cos(t0)
-    z = r * np.sin(t0)
+    # r_xy is the radial projection of the arm onto the XY-plane.
+    # This calculation was previously for the 'r' component (radial distance in XZ plane) in the old system.
+    r_xy = L1 * np.cos(t1) + L2 * np.cos(t1 + t2)
 
-    return np.array([x, y, z])
+    # Project r_xy onto the X and Y axes using the base rotation t0 (around the Z-axis).
+    # x_coord is the position along the world X-axis.
+    # This calculation is similar to the original 'x' component.
+    x_coord = r_xy * np.cos(t0)
+    
+    # y_coord is the position along the world Y-axis.
+    # This calculation is similar to the original 'z' component.
+    y_coord = r_xy * np.sin(t0)
+
+    return np.array([x_coord, y_coord, z_coord])
 
 THETA0_MIN_ANGLE = 0
 THETA0_MAX_ANGLE = 360

@@ -18,11 +18,11 @@ class tobor_env(gym.Env):
         
         self.previous_dist_to_target = None # Will be properly set in reset
 
-        spaces_box_low = -0.2
-        spaces_box_high = 0.2
+        spaces_box_low = -0.01
+        spaces_box_high = 0.01
         self.action_space = spaces.Box(low=spaces_box_low, high=spaces_box_high, shape=(self.num_joints,), dtype=np.float32)
 
-        # Observation space is the joint angles and the target position: [x, y, z, theta0, theta1, theta2]
+        # Observation space is the joint angles and the target position: [theta0, theta1, theta2, x, y, z]
         self.observation_space = spaces.Box(
             low=np.array([0, 0, 0, -.28, -.28, 0]),
             high=np.array([6.28, 3.14, 2.7, .28, .28, .28]), # URDF joint limits + target space
@@ -33,15 +33,16 @@ class tobor_env(gym.Env):
         self.action_repeat = action_repeat # Number of physics steps per agent action
 
         self.target_zone_threshold = 0.06  # Radius for being "in the zone" (larger than success threshold)
-        self.target_zone_reward_bonus = 50 # Reward per step for being in the target zone
+        self.target_zone_reward_bonus = 10.0 # Reward per step for being in the target zone
         
-        self.k_decay_exp_dense = 15.0       # Decay factor for exponential dense reward
-        self.max_dense_reward_val_exp = 2.0 # Max value of exponential dense reward (at dist=0)
+        self.k_decay_exp_dense = 5.0         # Decay factor for exponential dense reward
+        self.max_dense_reward_val_exp = -10.0 # Max value of exponential dense reward (at dist=0)
         
-        self.action_penalty_scale = 0.01    # Scale for action magnitude penalty
-        self.progress_reward_scale = 5.0     # Scale for progress reward
+        self.action_penalty_scale = -10.0    # Scale for action magnitude penalty
+        
+        self.progress_reward_scale = 10.0     # Scale for progress reward
 
-        self.max_steps = 200 # Max agent steps
+        self.max_steps = 500 # Max agent steps
         self.step_counter = 0 # Counts agent steps
         self._reset_target() # Sets target_position for the first time
         self.target_debug_item_id = -1 # For render visualization
@@ -59,7 +60,6 @@ class tobor_env(gym.Env):
         print(f"  action_penalty_scale: {self.action_penalty_scale}")
         print(f"  progress_reward_scale: {self.progress_reward_scale}")
 
-
     def _reset_target(self):
         self.target_position = np.random.uniform(low=[-.28, -.28, 0], high=[.28, .28, .28])
 
@@ -75,6 +75,7 @@ class tobor_env(gym.Env):
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
+        print("Episode reset at step_counter:", self.step_counter)
         p.resetSimulation(physicsClientId=self.physics_client)
         p.setGravity(0, 0, -9.81, physicsClientId=self.physics_client)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -111,7 +112,7 @@ class tobor_env(gym.Env):
                 jointIndex=i,
                 controlMode=p.POSITION_CONTROL,
                 targetPosition=new_target_angle,
-                force=50000, 
+                force=5000, 
                 physicsClientId=self.physics_client
             )
         
@@ -126,41 +127,21 @@ class tobor_env(gym.Env):
         # Initialize reward for this step
         current_step_reward = 0.0
 
-        # dense_reward = -10 * (dist / .63) # Reward is e.g. [-1, 0]
-        # current_step_reward = dense_reward 
-
-        exp_dense_reward = -1 * self.max_dense_reward_val_exp * np.exp(-self.k_decay_exp_dense * dist)
-        current_step_reward += exp_dense_reward
-
-        # Penalizes large actions to encourage smoother control.
-        action_mag_penalty = -1 * self.action_penalty_scale * np.linalg.norm(action)
-        current_step_reward += action_mag_penalty
-
-        # Rewards the agent for reducing its distance to the target compared to the previous step.
-        if self.previous_dist_to_target is not None:
-            distance_reduction = self.previous_dist_to_target - dist
-            progress_rwd = -1 * self.progress_reward_scale * distance_reduction
-            current_step_reward += progress_rwd
-        
-        # Rewards the agent for being within a certain radius of the target.
-        # This can encourage it to stay near the target even if it doesn't hit the precise success threshold.
-        if dist < self.target_zone_threshold:
-            current_step_reward += self.target_zone_reward_bonus
-
-        if dist < self.current_success_threshold: 
-            current_step_reward += 100.0 # Large bonus for precise success
+        dense_reward = 15 * ((0.20 - dist) / 0.1) # Reward is e.g. [-1, 0]
+        current_step_reward = dense_reward 
 
         terminated = dist < self.current_success_threshold # Termination based on precise success
         
         truncated = False
         if self.step_counter >= self.max_steps:
-            current_step_reward -= 10.0 
             truncated = True
-            
+        
         # Update previous_dist_to_target for the next agent step's progress calculation
         self.previous_dist_to_target = dist
-
+ 
         print("--------------------------------")
+        print("terminated:", terminated)
+        print("truncated:", truncated)
         print("current position: ", current_positions)
         print("action: ", action)
         print("ee_pos: ", ee_pos)

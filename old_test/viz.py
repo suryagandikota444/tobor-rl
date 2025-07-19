@@ -4,11 +4,12 @@ from tobor_env import tobor_env
 from stable_baselines3 import PPO
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env import VecNormalize
+from time import sleep
 
 # Load the normalization statistics
 # eval_env = make_vec_env(simple_fk_environment, n_envs=1)
-MODEL_PATH = "ppo_robot_arm_normalized_curriculum.zip"
-STATS_PATH = "vec_normalize_stats_curriculum.pkl"
+MODEL_PATH = "logs/PPO_6/ppo_robot_arm_normalized_curriculum.zip"
+STATS_PATH = "logs/PPO_6/vec_normalize_stats_curriculum.pkl"
 eval_env = make_vec_env(lambda: tobor_env(gui=True), n_envs=1)
 eval_env = VecNormalize.load(STATS_PATH, eval_env)
 
@@ -34,5 +35,5 @@ for i in range(5000): # Run for 5000 steps or a few episodes
     if dones[0]:
         print(f"Episode finished after {info[0]['episode']['l']} steps with total reward {info[0]['episode']['r']:.2f}")
         obs = eval_env.reset()
-
+    sleep(.1)
 eval_env.close()

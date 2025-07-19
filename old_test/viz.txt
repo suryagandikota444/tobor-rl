@@ -1,0 +1,1038 @@
+Environment Initialized:
+  Action space high: 0.01, low: -0.01
+  Initial success_threshold (for termination): 0.04
+  Target zone threshold (for staying reward): 0.06
+  Max agent steps: 500
+  Action repeat (physics steps per agent step): 10
+  Target zone reward bonus: 10.0
+  target zone reward bonus scale: 10.0
+  k_decay_exp_dense: 5.0
+  max_dense_reward_val_exp: -10.0
+  action_penalty_scale: -10.0
+  progress_reward_scale: 10.0
+Evaluating trained agent...
+Episode reset at step_counter: 0
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.38448468 2.93544115 1.32064345]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.18432278  0.24680816 -0.08323531]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.49273463582561694
+self.step_counter:  1
+reward:  -43.91019537384254
+--------------------------------
+Step: 0, Action: [[-0.05 -0.05 -0.05]], Reward: -43.91, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.3519186  2.90287507 1.28807909]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.1818772   0.26083671 -0.06946532]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.4813414329459037
+self.step_counter:  2
+reward:  -42.20121494188555
+--------------------------------
+Step: 1, Action: [[-0.05 -0.05 -0.05]], Reward: -42.20, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.31935253 2.87030899 1.25551449]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.17832357  0.27436836 -0.0550109 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.46921366849705465
+self.step_counter:  3
+reward:  -40.38205027455819
+--------------------------------
+Step: 2, Action: [[-0.05 -0.05 -0.05]], Reward: -40.38, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.28678645 2.83774291 1.22294955]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.17368811  0.28729491 -0.03991284]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.4563818364876317
+self.step_counter:  4
+reward:  -38.45727547314475
+--------------------------------
+Step: 3, Action: [[-0.05 -0.05 -0.05]], Reward: -38.46, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.25422037 2.80517684 1.19038562]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.16800748  0.29951145 -0.02421424]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.4428803508139722
+self.step_counter:  5
+reward:  -36.432052622095824
+--------------------------------
+Step: 4, Action: [[-0.05 -0.05 -0.05]], Reward: -36.43, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.22165429 2.77261076 1.15782154]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.1613279   0.31091634 -0.00796125]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.42874794883755185
+self.step_counter:  6
+reward:  -34.31219232563277
+--------------------------------
+Step: 5, Action: [[-0.05 -0.05 -0.05]], Reward: -34.31, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.18908821 2.74004468 1.12525716]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.15370508  0.32141249  0.00879733]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.4140282381356382
+self.step_counter:  7
+reward:  -32.10423572034573
+--------------------------------
+Step: 6, Action: [[-0.05 -0.05 -0.05]], Reward: -32.10, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.15652213 2.70747906 1.09269191]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.14520367  0.33090804  0.02601021]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.39877017100428247
+self.step_counter:  8
+reward:  -29.815525650642368
+--------------------------------
+Step: 7, Action: [[-0.05 -0.05 -0.05]], Reward: -29.82, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.12395606 2.67491373 1.06012676]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.13589697  0.33931753  0.04362392]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.3830289795740891
+self.step_counter:  9
+reward:  -27.45434693611336
+--------------------------------
+Step: 8, Action: [[-0.05 -0.05 -0.05]], Reward: -27.45, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.09138998 2.64234888 1.02756181]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.12586622  0.34656258  0.06158291]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.36686719973089155
+self.step_counter:  10
+reward:  -25.030079959633728
+--------------------------------
+Step: 9, Action: [[-0.05 -0.05 -0.05]], Reward: -25.03, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.0588239  2.60978475 0.99499716]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.11520004  0.35257274  0.07982993]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.3503560334865444
+self.step_counter:  11
+reward:  -22.55340502298166
+--------------------------------
+Step: 10, Action: [[-0.05 -0.05 -0.05]], Reward: -22.55, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [5.02625782 2.57722174 0.96243233]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.10399358  0.35728599  0.09830587]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.3335772584149764
+self.step_counter:  12
+reward:  -20.036588762246453
+--------------------------------
+Step: 11, Action: [[-0.05 -0.05 -0.05]], Reward: -20.04, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.99369174 2.54466038 0.92986771]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.09234785  0.36064962  0.11695035]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.3166255283796257
+self.step_counter:  13
+reward:  -17.493829256943854
+--------------------------------
+Step: 12, Action: [[-0.05 -0.05 -0.05]], Reward: -17.49, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.96112566 2.51210146 0.8973031 ]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [-0.08036878  0.36262043  0.13570181]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.29961140094917244
+self.step_counter:  14
+reward:  -14.941710142375864
+--------------------------------
+Step: 13, Action: [[-0.05 -0.05 -0.05]], Reward: -14.94, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.92855958 2.47954477 0.86473992]
+action:  [-0.05       -0.05        0.01607892]
+ee_pos:  [-0.06791388  0.36182048  0.14610958]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.2847220788656981
+self.step_counter:  15
+reward:  -12.708311829854715
+--------------------------------
+Step: 14, Action: [[-0.05       -0.05        0.01607892]], Reward: -12.71, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.89599351 2.44699045 0.87521646]
+action:  [-0.05      -0.05       0.0372363]
+ee_pos:  [-0.05547023  0.35977549  0.15318307]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.27066969439204663
+self.step_counter:  16
+reward:  -10.600454158806993
+--------------------------------
+Step: 15, Action: [[-0.05      -0.05       0.0372363]], Reward: -10.60, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.86342743 2.41443728 0.89947102]
+action:  [-0.05       -0.05       -0.00115678]
+ee_pos:  [-0.04329718  0.3578434   0.16482346]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.25552673633528256
+self.step_counter:  17
+reward:  -8.329010450292381
+--------------------------------
+Step: 16, Action: [[-0.05       -0.05       -0.00115678]], Reward: -8.33, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.83086135 2.38188115 0.898724  ]
+action:  [-0.05 -0.05  0.05]
+ee_pos:  [-0.0312085   0.35436004  0.17012269]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.24197360855198177
+self.step_counter:  18
+reward:  -6.2960412827972645
+--------------------------------
+Step: 17, Action: [[-0.05 -0.05  0.05]], Reward: -6.30, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.79829527 2.34932249 0.93129294]
+action:  [-0.05       -0.05        0.00351182]
+ee_pos:  [-0.01942227  0.35100264  0.18078415]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.22724623565343494
+self.step_counter:  19
+reward:  -4.086935348015238
+--------------------------------
+Step: 18, Action: [[-0.05       -0.05        0.00351182]], Reward: -4.09, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.76572919 2.31676233 0.9335893 ]
+action:  [-0.05 -0.05  0.05]
+ee_pos:  [-0.00786859  0.34640294  0.18572604]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.2139459484223566
+self.step_counter:  20
+reward:  -2.091892263353487
+--------------------------------
+Step: 19, Action: [[-0.05 -0.05  0.05]], Reward: -2.09, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.73316311 2.28419769 0.96616674]
+action:  [-0.05       -0.05        0.00496748]
+ee_pos:  [0.0033684  0.3417909  0.19589001]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.1996722320399676
+self.step_counter:  21
+reward:  0.04916519400486319
+--------------------------------
+Step: 20, Action: [[-0.05       -0.05        0.00496748]], Reward: 0.05, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.70059704 2.25163535 0.9694121 ]
+action:  [-0.05 -0.05  0.05]
+ee_pos:  [0.01426874 0.33615902 0.20048036]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.1867662344612607
+self.step_counter:  22
+reward:  1.9850648308108967
+--------------------------------
+Step: 21, Action: [[-0.05 -0.05  0.05]], Reward: 1.99, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.66803096 2.2190702  1.00198983]
+action:  [-0.05       -0.05        0.01497051]
+ee_pos:  [0.02481704 0.33033062 0.20902344]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.17335624588847454
+self.step_counter:  23
+reward:  3.9965631167288214
+--------------------------------
+Step: 22, Action: [[-0.05       -0.05        0.01497051]], Reward: 4.00, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.63546488 2.18650616 1.01175123]
+action:  [-0.05 -0.05  0.05]
+ee_pos:  [0.03495599 0.32375734 0.21317465]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.16105432637848427
+self.step_counter:  24
+reward:  5.841851043227361
+--------------------------------
+Step: 23, Action: [[-0.05 -0.05  0.05]], Reward: 5.84, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.6028988  2.15394069 1.04432775]
+action:  [-0.05       -0.05        0.00812843]
+ee_pos:  [0.04470739 0.3169761  0.22223687]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.14840671367666963
+self.step_counter:  25
+reward:  7.738992948499557
+--------------------------------
+Step: 24, Action: [[-0.05       -0.05        0.00812843]], Reward: 7.74, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.57033272 2.12137584 1.04963123]
+action:  [-0.05 -0.05  0.05]
+ee_pos:  [0.05399616 0.30957112 0.22606887]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.13700208973575168
+self.step_counter:  26
+reward:  9.44968653963725
+--------------------------------
+Step: 25, Action: [[-0.05 -0.05  0.05]], Reward: 9.45, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.53776664 2.08880976 1.08220844]
+action:  [-0.05       -0.05        0.04189184]
+ee_pos:  [0.06283229 0.30181275 0.23040988]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.12611153652463228
+self.step_counter:  27
+reward:  11.083269521305159
+--------------------------------
+Step: 26, Action: [[-0.05       -0.05        0.04189184]], Reward: 11.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.50520056 2.05624409 1.1095035 ]
+action:  [-0.05       -0.05        0.02313104]
+ee_pos:  [0.07120388 0.29373978 0.23703336]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.11583611099730184
+self.step_counter:  28
+reward:  12.624583350404725
+--------------------------------
+Step: 27, Action: [[-0.05       -0.05        0.02313104]], Reward: 12.62, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.47263449 2.02367801 1.12458002]
+action:  [-0.05 -0.05  0.05]
+ee_pos:  [0.07907705 0.28530058 0.24015361]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.10670465437364403
+self.step_counter:  29
+reward:  13.994301843953396
+--------------------------------
+Step: 28, Action: [[-0.05 -0.05  0.05]], Reward: 13.99, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.44006841 1.99111194 1.15715598]
+action:  [-0.05       -0.05        0.03781477]
+ee_pos:  [0.08645161 0.27658231 0.24441977]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.09869211468960486
+self.step_counter:  30
+reward:  15.19618279655927
+--------------------------------
+Step: 29, Action: [[-0.05       -0.05        0.03781477]], Reward: 15.20, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.40750233 1.95854586 1.181795  ]
+action:  [-0.05       -0.05        0.04964304]
+ee_pos:  [0.09331484 0.26760832 0.2470574 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.09202235155288885
+self.step_counter:  31
+reward:  16.196647267066673
+--------------------------------
+Step: 30, Action: [[-0.05       -0.05        0.04964304]], Reward: 16.20, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.37493625 1.92597978 1.21413853]
+action:  [-0.05       -0.05        0.02522963]
+ee_pos:  [0.09964925 0.25838767 0.25253051]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.08726350886448583
+self.step_counter:  32
+reward:  16.910473670327125
+--------------------------------
+Step: 31, Action: [[-0.05       -0.05        0.02522963]], Reward: 16.91, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.34237017 1.8934137  1.23058119]
+action:  [-0.05       0.0496739  0.05     ]
+ee_pos:  [0.11014444 0.26004632 0.23792271]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07608410729834524
+self.step_counter:  33
+reward:  18.587383905248217
+--------------------------------
+Step: 32, Action: [[-0.05       0.0496739  0.05     ]], Reward: 18.59, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26315509]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624131 0.25132353 0.25197616]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279675167454246
+self.step_counter:  34
+reward:  19.080487248818628
+--------------------------------
+Step: 33, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.2305877 ]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11115012 0.25961541 0.23792488]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516892720931838
+self.step_counter:  35
+reward:  18.724660918602243
+--------------------------------
+Step: 34, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26316174]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624132 0.25132355 0.25197476]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279654437571331
+self.step_counter:  36
+reward:  19.080518343643003
+--------------------------------
+Step: 35, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23059435]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.1111501  0.25961535 0.23792348]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.0751690334266895
+self.step_counter:  37
+reward:  18.724644985996576
+--------------------------------
+Step: 36, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26316839]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624133 0.25132357 0.25197336]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279633711671196
+self.step_counter:  38
+reward:  19.080549432493207
+--------------------------------
+Step: 37, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.230601  ]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11115008 0.25961529 0.23792209]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516913967206322
+self.step_counter:  39
+reward:  18.724629049190515
+--------------------------------
+Step: 38, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26317505]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624134 0.25132359 0.25197196]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279612989575712
+self.step_counter:  40
+reward:  19.08058051563643
+--------------------------------
+Step: 39, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23060766]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11115005 0.25961524 0.23792069]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516924594543647
+self.step_counter:  41
+reward:  18.724613108184528
+--------------------------------
+Step: 40, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.2631817 ]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624134 0.2513236  0.25197057]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279592271284589
+self.step_counter:  42
+reward:  19.080611593073115
+--------------------------------
+Step: 41, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23061431]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11115003 0.25961518 0.2379193 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516935224680697
+self.step_counter:  43
+reward:  18.724597162978956
+--------------------------------
+Step: 42, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26318835]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624135 0.25132362 0.25196917]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279571556797526
+self.step_counter:  44
+reward:  19.08064266480371
+--------------------------------
+Step: 43, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23062096]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11115001 0.25961513 0.2379179 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516945857617181
+self.step_counter:  45
+reward:  18.72458121357423
+--------------------------------
+Step: 44, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.263195  ]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624136 0.25132364 0.25196777]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279550846114238
+self.step_counter:  46
+reward:  19.080673730828643
+--------------------------------
+Step: 45, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23062762]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114998 0.25961507 0.2379165 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516956493352915
+self.step_counter:  47
+reward:  18.72456525997063
+--------------------------------
+Step: 46, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26320166]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624137 0.25132366 0.25196638]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279530139234502
+self.step_counter:  48
+reward:  19.080704791148246
+--------------------------------
+Step: 47, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23063427]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114996 0.25961501 0.23791511]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516967131887607
+self.step_counter:  49
+reward:  18.72454930216859
+--------------------------------
+Step: 48, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26320831]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624138 0.25132367 0.25196498]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279509436157974
+self.step_counter:  50
+reward:  19.08073584576304
+--------------------------------
+Step: 49, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23064092]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114993 0.25961496 0.23791371]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516977773221074
+self.step_counter:  51
+reward:  18.72453334016839
+--------------------------------
+Step: 50, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26321496]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624139 0.25132369 0.25196358]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279488736884426
+self.step_counter:  52
+reward:  19.080766894673364
+--------------------------------
+Step: 51, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23064758]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114991 0.2596149  0.23791232]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516988417353035
+self.step_counter:  53
+reward:  18.72451737397045
+--------------------------------
+Step: 52, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26322161]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624139 0.25132371 0.25196218]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279468041413553
+self.step_counter:  54
+reward:  19.08079793787967
+--------------------------------
+Step: 53, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23065423]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114989 0.25961485 0.23791092]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07516999064283265
+self.step_counter:  55
+reward:  18.724501403575104
+--------------------------------
+Step: 54, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26322826]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.1162414  0.25132373 0.25196079]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279447349745066
+self.step_counter:  56
+reward:  19.080828975382403
+--------------------------------
+Step: 55, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23066088]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114986 0.25961479 0.23790953]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517009714011487
+self.step_counter:  57
+reward:  18.72448542898277
+--------------------------------
+Step: 56, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26323492]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624141 0.25132374 0.25195939]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279426661878668
+self.step_counter:  58
+reward:  19.080860007182
+--------------------------------
+Step: 57, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23066753]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114984 0.25961473 0.23790813]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517020366537479
+self.step_counter:  59
+reward:  18.72446945019378
+--------------------------------
+Step: 58, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26324157]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624142 0.25132376 0.25195799]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279405977814121
+self.step_counter:  60
+reward:  19.080891033278817
+--------------------------------
+Step: 59, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23067418]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114981 0.25961468 0.23790673]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517031021861019
+self.step_counter:  61
+reward:  18.724453467208473
+--------------------------------
+Step: 60, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26324822]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624143 0.25132378 0.2519566 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279385297551139
+self.step_counter:  62
+reward:  19.080922053673294
+--------------------------------
+Step: 61, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23068084]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114979 0.25961462 0.23790534]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517041679981848
+self.step_counter:  63
+reward:  18.724437480027227
+--------------------------------
+Step: 62, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26325487]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624143 0.2513238  0.2519552 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279364621089404
+self.step_counter:  64
+reward:  19.080953068365893
+--------------------------------
+Step: 63, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23068749]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114977 0.25961457 0.23790394]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517052340899719
+self.step_counter:  65
+reward:  18.72442148865042
+--------------------------------
+Step: 64, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26326152]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624144 0.25132381 0.2519538 ]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279343948428679
+self.step_counter:  66
+reward:  19.080984077356984
+--------------------------------
+Step: 65, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23069414]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114974 0.25961451 0.23790255]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517063004614394
+self.step_counter:  67
+reward:  18.72440549307841
+--------------------------------
+Step: 66, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26326817]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624145 0.25132383 0.25195241]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279323279568674
+self.step_counter:  68
+reward:  19.081015080646992
+--------------------------------
+Step: 67, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23070079]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114972 0.25961446 0.23790115]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517073671125657
+self.step_counter:  69
+reward:  18.724389493311516
+--------------------------------
+Step: 68, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26327482]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624146 0.25132385 0.25195101]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279302614509088
+self.step_counter:  70
+reward:  19.08104607823637
+--------------------------------
+Step: 69, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23070744]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114969 0.2596144  0.23789976]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517084340433203
+self.step_counter:  71
+reward:  18.724373489350196
+--------------------------------
+Step: 70, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26328147]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624147 0.25132387 0.25194961]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279281953249643
+self.step_counter:  72
+reward:  19.081077070125534
+--------------------------------
+Step: 71, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23071409]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114967 0.25961434 0.23789836]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517095012536817
+self.step_counter:  73
+reward:  18.724357481194776
+--------------------------------
+Step: 72, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26328812]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624147 0.25132388 0.25194822]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279261295790072
+self.step_counter:  74
+reward:  19.08110805631489
+--------------------------------
+Step: 73, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23072074]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114965 0.25961429 0.23789697]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517105687436247
+self.step_counter:  75
+reward:  18.72434146884563
+--------------------------------
+Step: 74, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26329477]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624148 0.2513239  0.25194682]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279240642130073
+self.step_counter:  76
+reward:  19.08113903680489
+--------------------------------
+Step: 75, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23072739]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114962 0.25961423 0.23789557]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.0751711636513129
+self.step_counter:  77
+reward:  18.724325452303063
+--------------------------------
+Step: 76, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26330142]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624149 0.25132392 0.25194543]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279219992269403
+self.step_counter:  78
+reward:  19.081170011595894
+--------------------------------
+Step: 77, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23073404]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.1111496  0.25961418 0.23789418]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517127045621669
+self.step_counter:  79
+reward:  18.724309431567498
+--------------------------------
+Step: 78, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26330807]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.1162415  0.25132394 0.25194403]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279199346207774
+self.step_counter:  80
+reward:  19.08120098068834
+--------------------------------
+Step: 79, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23074069]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114957 0.25961412 0.23789278]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517137728907153
+self.step_counter:  81
+reward:  18.72429340663927
+--------------------------------
+Step: 80, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26331472]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624151 0.25132395 0.25194263]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279178703944857
+self.step_counter:  82
+reward:  19.081231944082717
+--------------------------------
+Step: 81, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.27723801 1.8932013  1.23074734]
+action:  [0.05 0.05 0.05]
+ee_pos:  [0.11114955 0.25961406 0.23789139]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07517148414987472
+self.step_counter:  83
+reward:  18.724277377518792
+--------------------------------
+Step: 82, Action: [[0.05 0.05 0.05]], Reward: 18.72, Done: False
+--------------------------------
+terminated: False
+truncated: False
+current position:  [4.30980409 1.92576738 1.26332137]
+action:  [-0.05 -0.05 -0.05]
+ee_pos:  [0.11624151 0.25132397 0.25194124]
+target_position:  [0.18503981 0.27285466 0.24184972]
+dist:  0.07279158065480422
+self.step_counter:  84
+reward:  19.08126290177937
+--------------------------------
+Step: 83, Action: [[-0.05 -0.05 -0.05]], Reward: 19.08, Done: False
+Version = 4.1 Metal - 88.1
+Vendor = Apple
+Renderer = Apple M3 Pro
+b3Printf: Selected demo: Physics Server
+startThreads creating 1 threads.
+starting thread 0
+started thread 0 
+MotionThreadFunc thread started
+numActiveThreads = 0
+stopping threads
+Thread with taskId 0 exiting
+Thread TERMINATED
+destroy semaphore
+semaphore destroyed
+destroy main semaphore
+main semaphore destroyed

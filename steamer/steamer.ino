@@ -2,189 +2,195 @@
 #include <Adafruit_PWMServoDriver.h>
 #include <WiFi.h>
 #include <WebServer.h>
+#include <math.h>
 
-// WiFi credentials for Access Point mode
-const char* ap_ssid = "ESP32_Arm_Control"; // Name of the WiFi network the ESP32 will create
-const char* ap_password = "password123";   // Password for the ESP32's WiFi network (8 chars min)
+// WiFi credentials
+const char* ap_ssid = "ESP32_Arm_Control";
+const char* ap_password = "password123";
 
-// Create web server on port 80
+// Web server on port 80
 WebServer server(80);
 
-// Define I2C pins
-#define SDA_PIN 15
-#define SCL_PIN 14
+// I2C pins
+#define SDA_PIN 26
+#define SCL_PIN 25
 
-// Initialize PCA9685 with default I2C address (0x40)
+// Servo controller
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-// Define servo channels
-const int SERVO1_CHANNEL = 1;  // Base servo (θ₁)
-const int SERVO2_CHANNEL = 0;  // Elbow servo (θ₂)
-const int SERVO3_CHANNEL = 2;  // Base rotation (θ0)
+// Servo channels
+const int SERVO1_CHANNEL = 1;  // Shoulder
+const int SERVO2_CHANNEL = 0;  // Elbow
+const int SERVO3_CHANNEL = 2;  // Base rotation
 
-// Arm lengths (in cm)
-const float L1 = 28.00;
-const float L2 = 25.30;
+// Arm dimensions (cm)
+const float L1 = 15.00;
+const float L2 = 13.40;
 
 // PWM pulse width limits
-const int SERVO_MIN = 105; // From specs
+const int SERVO_MIN = 105;
 const int SERVO_MAX = 512;
 
-// Function to set servo angle
-void setServoAngle(uint8_t channel, float angle) {
-    int pulse = map((int)angle, 0, 270, SERVO_MIN, SERVO_MAX);
-    pwm.setPWM(channel, 0, pulse);
+// Servo state tracking
+float servoAngles[3] = {90.0, 90.0, 90.0};       // current angles
+float targetAngles[3] = {90.0, 90.0, 90.0};      // target angles
+float speeds[3] = {1.0, 1.0, 1.0};               // deg per update
+unsigned long lastUpdateTime = 0;
+const unsigned long updateInterval = 20;        // ms
+
+// Convert angle to PWM pulse
+int angleToPulse(float angle) {
+    angle = constrain(angle, 0, 180);
+    return map((int)angle, 0, 270, SERVO_MIN, SERVO_MAX);
 }
 
-// Compute inverse kinematics
+// Directly set servo (no smooth motion)
+void setServoAngle(uint8_t channel, float angle) {
+    angle = constrain(angle, 0, 180);
+    int pulse = angleToPulse(angle);
+    pwm.setPWM(channel, 0, pulse);
+    servoAngles[channel] = angle;
+}
+
+// Set target for servo (non-blocking move)
+void setServoTarget(uint8_t channel, float angle) {
+    if (channel < 3) {
+        targetAngles[channel] = constrain(angle, 0, 180);
+    }
+}
+
+// Called regularly to update servo positions
+void updateServos() {
+    unsigned long now = millis();
+    if (now - lastUpdateTime < updateInterval) return;
+    lastUpdateTime = now;
+
+    for (int i = 0; i < 3; i++) {
+        float diff = targetAngles[i] - servoAngles[i];
+        if (abs(diff) > 0.5) {
+            float step = constrain(diff, -speeds[i], speeds[i]);
+            float newAngle = servoAngles[i] + step;
+            setServoAngle(i, newAngle);
+        }
+    }
+}
+
+// Inverse kinematics
 bool inverseKinematics(float x_d, float y_d, float& theta1, float& theta2) {
-    float c = ((x_d * x_d) + (y_d * y_d) - (L1 * L1) - (L2 * L2)) / (2 * L1 * L2);
-    if (c < -1 || c > 1) {
+    const float L1 = 15.0;
+    const float L2 = 13.4;
+
+    float r = sqrt(x_d * x_d + y_d * y_d);
+    if (r > (L1 + L2) || r < fabs(L1 - L2)) {
         Serial.println("Error: Position not reachable");
-        theta1 = 0;
-        theta2 = 0;
         return false;
     }
 
-    theta2 = acos(c);
-    float a = L1 + L2 * cos(theta2);
-    float b = L2 * sin(theta2);
-    theta1 = atan2(a * x_d - b * y_d, b * x_d + a * y_d);
+    float cos_theta2 = (x_d * x_d + y_d * y_d - L1 * L1 - L2 * L2) / (2 * L1 * L2);
+    if (cos_theta2 < -1 || cos_theta2 > 1) {
+        Serial.println("Error: Invalid cosine value");
+        return false;
+    }
 
-    // Convert to degrees
-    theta1 = theta1 * 180.0 / PI;
-    theta2 = theta2 * 180.0 / PI;
+    float theta2_rad = acos(cos_theta2);
+    float theta2_deg = theta2_rad * 180.0 / PI;
+
+    float k1 = L1 + L2 * cos(theta2_rad);
+    float k2 = L2 * sin(theta2_rad);
+    float theta1_rad = atan2(y_d, x_d) - atan2(k2, k1);
+    float theta1_deg = theta1_rad * 180.0 / PI;
+    if (theta1_deg < 0) theta1_deg += 360;
+
+    if (theta1_deg > 270 || theta2_deg > 270) {
+        theta2_rad = -acos(cos_theta2);
+        theta2_deg = theta2_rad * 180.0 / PI;
+        k1 = L1 + L2 * cos(theta2_rad);
+        k2 = L2 * sin(theta2_rad);
+        theta1_rad = atan2(y_d, x_d) - atan2(k2, k1);
+        theta1_deg = theta1_rad * 180.0 / PI;
+        if (theta1_deg < 0) theta1_deg += 360;
+
+        if (theta1_deg > 270 || theta2_deg < 0 || theta2_deg > 270) {
+            Serial.println("Error: Angles out of range");
+            return false;
+        }
+    }
+
+    theta1 = theta1_deg;
+    theta2 = theta2_deg;
     return true;
 }
 
-// Move servos using inverse kinematics
-void moveServos(float theta1, float theta2) {
-    float servo1_angle = -theta1;  
-    float servo2_angle = theta2;       
+// ===================== HTTP HANDLERS =====================
 
-    setServoAngle(SERVO1_CHANNEL, servo1_angle);
-    setServoAngle(SERVO2_CHANNEL, servo2_angle);
-}
-
-// Handle request to set a specific servo angle
 void handleSetAngle() {
     if (server.hasArg("servo") && server.hasArg("angle")) {
         int servo = server.arg("servo").toInt();
         float angle = server.arg("angle").toFloat();
-        setServoAngle(servo, angle);
-        server.send(200, "text/plain", "Servo moved");
+        setServoTarget(servo, angle);
+        server.send(200, "text/plain", "Target angle set");
     } else {
         server.send(400, "text/plain", "Missing parameters");
     }
 }
 
-// Handle request to move to a specific (x, y) position
+void handleSetMultipleAngles() {
+    for (int i = 0; i < 3; i++) {
+        String sName = "servo" + String(i);
+        String aName = "angle" + String(i);
+        if (server.hasArg(sName) && server.hasArg(aName)) {
+            int servo = server.arg(sName).toInt();
+            float angle = server.arg(aName).toFloat();
+            setServoTarget(servo, angle);
+        }
+    }
+    server.send(200, "text/plain", "Multiple angles set");
+}
+
 void handleMoveIK() {
     if (server.hasArg("x") && server.hasArg("y")) {
         float x = server.arg("x").toFloat();
         float y = server.arg("y").toFloat();
         float theta1, theta2;
-        inverseKinematics(x, y, theta1, theta2);
-        moveServos(theta1, theta2);
-        server.send(200, "text/plain", "Moved to position");
-    } else {
-        server.send(400, "text/plain", "Missing parameters");
-    }
-}
-
-void handleServoSweep() {
-    // Check if all required parameters are present in the request
-    if (server.hasArg("y_init") && server.hasArg("x_init") && server.hasArg("step_size") &&
-        server.hasArg("base_angle_init") && server.hasArg("base_angle_final") &&
-        server.hasArg("base_step") && server.hasArg("y_min")) {
-        
-        // Parse all parameters from the server request
-        float y_init = server.arg("y_init").toFloat();
-        float x_init = server.arg("x_init").toFloat();
-        float step_size = server.arg("step_size").toFloat();
-        float base_angle_init = server.arg("base_angle_init").toFloat();
-        float base_angle_final = server.arg("base_angle_final").toFloat();
-        float base_step = server.arg("base_step").toFloat();
-        float y_min = server.arg("y_min").toFloat();
-
-        // Execute the servo sweep with received parameters
-        float last_down = 0;
-        float last_up   = y_init;
-        
-        for (float base_angle = base_angle_init; base_angle <= base_angle_final; base_angle += base_step) {
-            Serial.print("Base angle: ");
-            Serial.println(base_angle);
-            setServoAngle(SERVO3_CHANNEL, base_angle);
-            for (float curr_y_down = last_up; curr_y_down >= y_min; curr_y_down -= step_size) {
-                float theta1, theta2;
-                Serial.print("Current Y down: ");
-                Serial.println(curr_y_down);
-                bool success = inverseKinematics(x_init, curr_y_down, theta1, theta2);
-                Serial.print("Theta1 up: ");
-                Serial.print(theta1);
-                Serial.print(" Theta2 up: ");
-                Serial.println(theta2);
-                if (success) {
-                  last_down = curr_y_down;
-                  moveServos(theta1, theta2);
-                }
-                delay(100);  // Small delay between servo movements
-            }
-
-            for (float curr_y_up = last_down; curr_y_up <= y_init; curr_y_up += step_size) {
-                float theta1, theta2;
-                Serial.print("Current Y up: ");
-                Serial.println(curr_y_up);
-                bool success = inverseKinematics(x_init, curr_y_up, theta1, theta2);
-                Serial.print("Theta1 down: ");
-                Serial.print(theta1);
-                Serial.print(" Theta2 down: ");
-                Serial.println(theta2);
-                if (success) {
-                  last_down = curr_y_up;
-                  moveServos(theta1, theta2);
-                }
-                delay(100);  // Small delay between servo movements
-            }
+        if (inverseKinematics(x, y, theta1, theta2)) {
+            setServoTarget(SERVO1_CHANNEL, theta1);
+            setServoTarget(SERVO3_CHANNEL, theta2);
+            server.send(200, "text/plain", "Moved to position");
+        } else {
+            server.send(400, "text/plain", "IK failed");
         }
-
-        // Send success response
-        server.send(200, "text/plain", "Servo sweep completed");
     } else {
-        // Send error response if parameters are missing
         server.send(400, "text/plain", "Missing parameters");
     }
 }
+
+// ===================== SETUP =====================
 
 void setup() {
     Serial.begin(115200);
-    pinMode(4, OUTPUT);
-    digitalWrite(4, LOW);
-
     Wire.begin(SDA_PIN, SCL_PIN);
     pwm.begin();
     pwm.setPWMFreq(50);
-    Serial.println("PCA9685 initialized");
 
-    // Configure ESP32 as a WiFi Access Point
-    Serial.print("Setting up AP: ");
-    Serial.println(ap_ssid);
-    WiFi.softAP(ap_ssid, NULL);
-
+    WiFi.softAP(ap_ssid, ap_password);
     IPAddress myIP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
     Serial.println(myIP);
-    Serial.println("Connect to this WiFi network and use the IP address above to send commands.");
 
-    // Define web server routes
     server.on("/set_angle", handleSetAngle);
+    server.on("/set_angles", handleSetMultipleAngles);
     server.on("/move_ik", handleMoveIK);
-    server.on("/sweep", handleServoSweep);
-    
-    // Start server
     server.begin();
+
+    // Move to neutral start
+    setServoAngle(SERVO1_CHANNEL, 90.0);
+    setServoAngle(SERVO2_CHANNEL, 90.0);
+    setServoAngle(SERVO3_CHANNEL, 90.0);
 }
+
+// ===================== LOOP =====================
 
 void loop() {
     server.handleClient();
+    updateServos();
 }
