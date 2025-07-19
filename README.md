@@ -5,18 +5,18 @@ This repository contains code for training and controlling a two-link robotic ar
 ## File Structure
 
 ### Core Environment Files
-- **`tobor_env.py`** - Main RL environment class that creates a simulated world using PyBullet physics engine. Designed for training reinforcement learning algorithms like PPO to control the robotic arm.
-- **`simple_fk_environment.py`** - Previous version of the environment that uses simple forward kinematics instead of full physics simulation.
-- **`tobor.urdf`** - URDF (Unified Robot Description Format) file that defines the robot's structure, joints, and physical properties.
+- **`mujoco_working_code/tobor_mujoco_env.py`** - Main RL environment class that creates a simulated world using Mujoco physics engine. Designed for training reinforcement learning algorithms like PPO to control the robotic arm.
+- **`old_test/simple_fk_environment.py`** - Previous version of the environment that uses simple forward kinematics instead of full physics simulation.
+- **`mujoco_working_code/tobor.xml`** - XML file that defines the robot's structure, joints, and physical properties.
 
 ### Training and Evaluation
-- **`train.py`** - Trains a PPO (Proximal Policy Optimization) algorithm using either the simple forward kinematics or full physics environment.
-- **`viz.py`** - Visualizes training performance and metrics.
-- **`control.py`** - Inference script that loads a trained model and sends control commands to the physical robot.
+- **`mujoco_working_code/train.py`** - Trains a PPO (Proximal Policy Optimization) algorithm using either the simple forward kinematics or full physics environment.
+- **`mujoco_working_code/sim_dynamic_marker.py`** - Visualizes training performance and metrics.
+- **`mujoco_working_code/control.py`** - Inference script that loads a trained model and sends control commands to the physical robot.
 
 ### Additional Components
-- **`stereo_depth_pipeline/`** - Future perception module (not currently in use) that will enable the robot to perceive its environment using stereo depth cameras.
-- **`scratch.py`** - Development/testing file.
+- **`old_test/stereo_depth_pipeline/`** - Future perception module (not currently in use) that will enable the robot to perceive its environment using stereo depth cameras.
+- **`old_test/scratch.py`** - Development/testing file.
 
 ## Robot Description
 
@@ -30,11 +30,11 @@ This configuration allows for planar movement and is commonly used for learning 
 ## Usage
 
 1. **Training**: Use `train.py` to train RL models on the simulated environment
-2. **Visualization**: Use `viz.py` to monitor training progress and performance
+2. **Visualization**: Use `sim_dynamic_marker.py` to monitor training progress and performance
 3. **Deployment**: Use `control.py` to deploy trained models to the physical robot
 
 ## Dependencies
 
-- PyBullet (physics simulation)
+- Mujoco (physics simulation)
 - PPO implementation (reinforcement learning)
-- Standard robotics libraries for URDF parsing and control 
+- Standard robotics libraries for XML parsing and control 
