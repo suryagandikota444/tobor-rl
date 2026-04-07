@@ -2,6 +2,32 @@
 
 This repository contains code for training and controlling a two-link robotic arm using reinforcement learning. The robot consists of a base, a first arm segment, and a second arm segment extending from the first.
 
+## Automated Clothes Steaming (`steamer/`)
+
+The `steamer/` directory contains the firmware for Tobor's flagship daily-use application: **autonomous garment steaming**. The idea is simple — mount a handheld steamer to the robot's end effector, hang a shirt on a rack, and let the arm do the rest every morning.
+
+### How It Works
+
+The ESP32-based firmware (`steamer.ino`) runs a WiFi access point and exposes HTTP endpoints to orchestrate the arm. Under the hood it:
+
+1. **Controls a dual two-link arm system** (left and right, 6 servos total) via a PCA9685 PWM driver over I2C, with smooth non-blocking motion interpolation at 20 ms intervals.
+2. **Computes inverse kinematics** on-board to translate desired (x, y) end-effector positions into shoulder and elbow joint angles, keeping the steamer head precisely on target.
+3. **Executes a predefined sweep pattern** — the arm starts in an inverted-V pose, sweeps the steamer downward across the fabric, rotates the base to the next column, and repeats — covering the full width of the garment in a series of vertical passes.
+4. **Accepts real-time commands** over HTTP (`/set_angle`, `/set_actuators`, `/move_ik`) so the sweep can be tuned, paused, or overridden from a phone or the companion app.
+
+### Typical Morning Routine
+
+- Hang your shirt on the rack the night before.
+- Fill and power on the steamer.
+- Tobor connects to your network (or hosts its own AP), starts the sweep sequence, and finishes in a few minutes — wrinkle-free clothes with zero effort.
+
+### Hardware
+
+- ESP32 microcontroller
+- PCA9685 16-channel 12-bit PWM servo driver
+- Two-link arm (3 DOF per side) — 3D-printed with 270° servos
+- Handheld garment steamer mounted at the end effector
+
 ## File Structure
 
 ### Core Environment Files
