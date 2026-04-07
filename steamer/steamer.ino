@@ -258,7 +258,7 @@ void setup() {
 }
 
 // ===================== LOOP =====================
-
+// Main loop to handle web server and update servos
 void loop() {
     server.handleClient();
     updateServos(RIGHT_BASE);
